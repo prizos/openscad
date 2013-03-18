@@ -159,29 +159,65 @@ module bottom_plate(){
 difference(){
 union(){
 translate([80/2,25/2,-25]){cylinder(h = 12, r=22, $fs=1);}
-translate([80/2,-15,-25]){rotate([0,0,30]){cube([80,50,10]);}}
+translate([80/2,-20,-25]){rotate([0,0,30]){cube([90,55,10]);}}
 }
 translate([80/2,25/2,-20]){cylinder(h = 7, r=22.4/2, $fs=1);}
 translate([80/2,25/2,-30]){#cylinder(h = 20, r=8.4/2, $fs=1);}
+translate([58,29,-46]){rotate([0,0,-15]){bottom_motor_house();}}
+
+#translate([80/2,25/2,-25]){difference(){
+
+union(){
+rotate([0,0,80]){translate([-40,-58,-0]){cube([50,90,10]);}}
+rotate([0,0,30]){translate([-40,-58,-0]){cube([50,90,10]);}}
+}
+cylinder(h = 12, r=22, $fs=1);
+}
+}
+
+translate([54,52,-46]){rotate([0,0,-15]){#cube([60,50,40]);}}
+
 
 translate([80/2,25/2,-25]){flat_nut(8);}
 }
 }
 
 module bottom_motor_house(){
-difference(){
+//difference(){ //renable for a true servo image
 union(){
 //translate([80/2,50,-45]){cube([40,20,36]);}
 translate([32,20/2,0]){#cylinder(h = 36+6, r=8.4/2, $fs=1);}
-#cube([40,20,36]);
-translate([(40-55)/2,0,29]){#cube([55,20,2.35]);}
+#cube([42,20,36]);
+translate([42,(20/2)-6.25/2,0]){#cube([5,6.25,40]);}
+translate([(42-55)/2,0,29]){#cube([55,20,2.35]);}
+}
+#hull(){
+   translate([((42-55)/2)+2.2+1.5, 1.6+2.2, 15]) cylinder(h = 20, r=2.2, $fs=1);
+   translate([((42-55)/2)+2.2+1.5, 5+2.2, 15])cylinder(h = 20, r=2.2, $fs=1);
+   }
+   
+#hull(){
+   translate([((42-55)/2)+2.2+1.5, 1.6+2.2+20/2, 15]) cylinder(h = 20, r=2.2, $fs=1);
+   translate([((42-55)/2)+2.2+1.5, 5+2.2+20/2, 15])cylinder(h = 20, r=2.2, $fs=1);
+   }
+   
+#hull(){
+   translate([((42-55)/2)-2.2-1.5+55, 1.6+2.2, 15]) cylinder(h = 20, r=2.2, $fs=1);
+   translate([((42-55)/2)-2.2-1.5+55, 5+2.2, 15])cylinder(h = 20, r=2.2, $fs=1);
+   }
+   
+#hull(){
+   translate([((42-55)/2)-2.2-1.5+55, 1.6+2.2+20/2, 15]) cylinder(h = 20, r=2.2, $fs=1);
+   translate([((42-55)/2)-2.2-1.5+55, 5+2.2+20/2, 15])cylinder(h = 20, r=2.2, $fs=1);
+   }
 
+//} //re-enable for a true servo image
 }
-}
-}
+
+
 
 //base_plate();
 //gear_module();
 //translate([55,30,-45]){rotate([0,0,-10]){
-bottom_motor_house();
-//bottom_plate();
+//bottom_motor_house();
+bottom_plate();
